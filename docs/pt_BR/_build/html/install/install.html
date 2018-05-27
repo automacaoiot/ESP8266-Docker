@@ -179,7 +179,7 @@
 <p>Após a instalação do ToolBox, você deverá conter em sua máquina as seguintes Aplicações: Docker, VirtualBox, Kinematic e o GIT.</p>
 <p>Atualize o VirtualBox se necessário ou se desejar, a versão que acompanha o ToolKit funciona perfeitamente.</p>
 <p>Prosseguiremos com a Instalação e Configuração do Container, que é basicamente nossa área de desenvolvimento, nos seguintes passos:</p>
-<p>Kinematic</p>
+<p><strong>Kinematic</strong></p>
 <p>Assim, que completar a instalação, execute o Kinematic.
 Após isso, clique na opção de executar com o Virtual Box/VM. Ele irá iniciar o processo de criação de uma VM, pode ser que demore um pouco!</p>
 <img alt="../_images/startDocker.png" class="align-center" src="../_images/startDocker.png" />
@@ -189,37 +189,71 @@ Após isso, clique na opção de executar com o Virtual Box/VM. Ele irá iniciar
 <p>Após isso, será necessário que configuremos a porta USB que será utilizada para o flash do ESP8266.</p>
 <p>Conecte na USB seu ESP8266.
 Verifique se o Windows detectou corretamente seu ESP em Gerenciador de Dispositivos, ele deverá aparecer na parte de Portas COM.</p>
-<p>É obrigatório possuir um ESP8266 conectado na USB antes de iniciar o Container, caso contrário não irá funcionar.</p>
-<p>VirtualBox</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">É obrigatório possuir um ESP8266 conectado na USB antes de iniciar o Container, caso contrário não irá funcionar.</p>
+</div>
+<p><strong>VirtualBox</strong></p>
 <p>Abra o Virtual Box, deverá ter uma máquina virtual chamada default. É por meio desta que o nosso docker funciona.</p>
+<p>É obrigatório possuir um ESP8266 conectado na USB antes de iniciar o Container, caso contrário não irá funcionar.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
 <p>Precisamos emular nosso dispositivo USB ( ESP8266 ) para dentro do Docker e iremos fazer isso através do VirtualBox mas para isso precisaremos parar a VM que está rodando, há duas maneiras de fazer isso:</p>
-<p>Via Comando ( Recomendado )</p>
-<p>Apertando botão direito na VM e realizar o desligamento. ( Não Recomendado )</p>
+<ul class="last simple">
+<li>Via Comando ( Recomendado )</li>
+<li>Apertando botão direito na VM e realizar o desligamento. ( Não Recomendado )</li>
+</ul>
+</div>
 <p>Para desligar a VM via Comando, retorne ao Kinematic ( Aberto anteriormente ) e clique em Docker CLI, como mostra a figura abaixo:</p>
 <img alt="../_images/container.png" class="align-center" src="../_images/container.png" />
 <p>O PowerShell ( Windows 10 ) ou CMD irá abrir.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
 <p>Digite o seguinte comando para parar a Maquina Virtual:</p>
-<p>docker-machine stop</p>
+<ul class="last simple">
+<li>docker-machine stop</li>
+</ul>
+</div>
 <img alt="../_images/powerShell.png" class="align-center" src="../_images/powerShell.png" />
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
 <p>Após parar a VM, volte ao VirtualBox, abra a configuração da VM default e realize a emulação do USB onde seu ESP8266 está localizado, como mostra a figura abaixo:</p>
-<p>Clique no USB com um + e selecione o dispositivo USB que corresponde ao seu ESP.</p>
+<ul class="last simple">
+<li>Clique no USB com um + e selecione o dispositivo USB que corresponde ao seu ESP.</li>
+</ul>
+</div>
 <img alt="../_images/oracle.png" class="align-center" src="../_images/oracle.png" />
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
 <p>Retorne ao PowerShell ou CMD e digite o seguinte comando para religar a Maquina Virtual:</p>
-<p>docker-machine start</p>
+<ul class="last simple">
+<li>docker-machine start</li>
+</ul>
+</div>
 <p>Note que caso você queira desligar/religar o ambiente de desenvolvimento, os mesmos comandos do docker-machine start/stop deverão utilizados.</p>
-<p>Última Etapa</p>
+<p><strong>Última Etapa</strong></p>
 <p>Não iremos mais utilizar o VirtualBox, portanto pode ser fechado. A partir dessa etapa, apenas o Docker CLI e o Kinematic são utilizados.</p>
 <p>Crie uma pasta no seguinte caminho C:UsersSeuNomesming. ( Pasta que será compartilhada com o Container )</p>
 <p>Atenção ao nome da pasta, o comando abaixo está configurado para funcionar somente com esse nome de pasta.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
 <p>Seguindo todos esses passos, digite o último comando no PowerShell ou CMD:</p>
-<p>docker pull automacaoiot/esp8266-sdk ; docker run -it -d -p 8181:80 -p 8122:22 -p 4075:4075 –device=//dev/ttyUSB0 -v /c/Users/$env:username/sming/:/workspace/shared-workspace/ automacaoiot/esp8266-sdk</p>
+<ul class="last simple">
+<li>docker pull automacaoiot/esp8266-sdk ; docker run -it -d -p 8181:80 -p 8122:22 -p 4075:4075 –device=//dev/ttyUSB0 -v /c/Users/$env:username/sming/:/workspace/shared-workspace/ automacaoiot/esp8266-sdk</li>
+</ul>
+</div>
 <img alt="../_images/powerClone.png" class="align-center" src="../_images/powerClone.png" />
 <p>Após isso, seu Container já estará pronto e configurado para uso. Agora é apenas programar !</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
 <p>Caso queira mudar a localização da pasta compartilhada, é só mudar o caminho no comando que está descrito em:</p>
-<p>/c/Users/$env:username/sming/</p>
-<p>Abrindo no Navegador</p>
+<ul class="last simple">
+<li>/c/Users/$env:username/sming/</li>
+</ul>
+</div>
+<p><strong>Abrindo no Navegador</strong></p>
 <p>Ainda no Kinematic, note que apareceu um Container, de nome aleatório, clique nele e selecione Web Preview ao lado.</p>
-<p>Observações</p>
+<p><strong>Observações</strong></p>
 <p>O Container só será inicializado ( Supondo que você tenha desligado e religado o computador ), caso o ESP8266 esteja conectado na USB. Após conectar é só apertar START no Kinematic.
 Após iniciar o Container, é possível desconectar e conectar o ESP8266 da porta USB quantas vezes for necessário ou, supondo que você possua vários ESPs de mesmo modelo, trocar de dispositivo.</p>
 </div>
